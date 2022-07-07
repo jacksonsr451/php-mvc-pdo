@@ -7,20 +7,22 @@ namespace Composer\Autoload;
 class ComposerStaticInit61c605b98da07986f0a9f48146768c91
 {
     public static $prefixLengthsPsr4 = array (
-        'P' => 
+        'A' => 
         array (
-            'PhpMvcPdo\\' => 10,
+            'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'PhpMvcPdo\\' => 
+        'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
     public static $classMap = array (
+        'App\\Classes\\Routes' => __DIR__ . '/../..' . '/app/Classes/Routes.php',
+        'App\\Classes\\Uri' => __DIR__ . '/../..' . '/app/Classes/Uri.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
