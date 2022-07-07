@@ -8,7 +8,7 @@ abstract class Model {
 
     public function __construct()
     {
-        $this->connect = (new Connection())->getConnection();
+        $this->connect = Connection::getConnection();
     }
  
     public function all() {

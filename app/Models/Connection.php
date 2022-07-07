@@ -7,11 +7,9 @@ use PDOException;
 
 class Connection {
     protected static $pdo;
-    public function __construct(){
-        $this->connect();
-    }
+    public function __construct(){}
 
-    private function connect() {
+    private static function connect() {
         $config = require_once(__DIR__ . "/../../setings.php");
         $setup = "mysql:host={$config["db"]["host"]};dbname={$config["db"]["db_name"]};charset={$config["db"]["charset"]};";
         $username = $config["db"]["username"];
@@ -25,7 +23,8 @@ class Connection {
         }
     }
 
-    public function getConnection(){
+    public static function getConnection(){
+        self::connect();
         return self::$pdo;
     }
 }
