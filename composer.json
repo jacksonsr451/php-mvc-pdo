@@ -1,0 +1,16 @@
+{
+    "name": "jacksonsr45/php-mvc-pdo",
+    "description": "Um sistema simples em php",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PhpMvcPdo\\": "app/"
+        }
+    },
+    "authors": [{
+        "name": "jacksonsr451",
+        "email": "jackson.severino.rocha@escola.pr.gov.br"
+    }],
+    "minimum-stability": "stable",
+    "require": {}
+}
