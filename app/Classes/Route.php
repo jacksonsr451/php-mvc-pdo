@@ -6,7 +6,7 @@ use Exception;
 
 class Route { 
     private static array $routes;
-    private static array $params;
+    private static $params;
 
     public static function load($uri) {
         try {
@@ -18,20 +18,20 @@ class Route {
             $controller = new $controller();
             $action = self::getMethod($controller, self::$routes[$uri]);
 
-            self::loadMethod($controller->$action());
+            self::loadMethod($controller, $action);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
     }
 
-    private static function loadMethod($action) {
+    private static function loadMethod($controller, $action) {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
-                $action(self::$params);
+                $controller->$action($_POST);
                 break;
             
             default:
-                $action();
+                $controller->$action();
                 break;
         }
     }
@@ -62,7 +62,7 @@ class Route {
     }
 
     public static function post($route, $controller) {
-        self::$params = $_POST;
+        // self::$params = $_POST;
         self::$routes[$route] = $controller;
     }
 
