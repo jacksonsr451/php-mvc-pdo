@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 
 class UsersController extends Controller {
-    public function create($param) {
-        dd($param['id']);
+    public function create($request) {
+        dd($request['id']);
         die;
     }
 }
