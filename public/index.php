@@ -2,14 +2,11 @@
 
 require_once(__DIR__ . "/../bootstrap.php");
 
-use App\Classes\Routes;
+use App\Classes\Route;
 use App\Classes\Uri;
 
-
-$routes = [
-    '/' => 'HomeController@index',
-];
+require_once(__DIR__ . "/../app/routes.php");
 
 $uri = Uri::load();
 
-require_once(__DIR__ . Routes::load($routes, $uri));
+Route::load($uri);

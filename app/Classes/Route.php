@@ -4,16 +4,18 @@ namespace App\Classes;
 
 use Exception;
 
-class Routes { 
-    public static function load($routes, $uri) {
+class Route { 
+    private static array $routes;
+
+    public static function load($uri) {
         try {
-            if(!array_key_exists($uri, $routes)) {
+            if(!array_key_exists($uri, self::$routes)) {
                 throw new \Exception("Route dont exists {$uri}");
             }
     
-            $controller = self::getController($routes[$uri]);
+            $controller = self::getController(self::$routes[$uri]);
             $controller = new $controller();
-            $action = self::getMethod($controller, $routes[$uri]);
+            $action = self::getMethod($controller, self::$routes[$uri]);
 
             $controller->$action();
         } catch (Exception $ex) {
@@ -40,5 +42,9 @@ class Routes {
         }
 
         return $method[1];
+    }
+
+    public static function get($route, $controller) {
+        self::$routes[$route] = $controller;
     }
 }
