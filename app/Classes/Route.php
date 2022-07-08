@@ -27,7 +27,7 @@ class Route {
     private static function loadMethod($controller, $action) {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
-                $controller->$action($_POST);
+                $controller->$action(self::$params);
                 break;
             
             default:
@@ -62,7 +62,7 @@ class Route {
     }
 
     public static function post($route, $controller) {
-        // self::$params = $_POST;
+        self::$params = $_POST;
         self::$routes[$route] = $controller;
     }
 
