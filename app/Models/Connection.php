@@ -10,7 +10,7 @@ class Connection {
     public function __construct(){}
 
     private static function connect() {
-        $config = require_once(__DIR__ . "/../../setings.php");
+        $config = require_once(__DIR__ . "/../../config.php");
         $setup = "mysql:host={$config["db"]["host"]};dbname={$config["db"]["db_name"]};charset={$config["db"]["charset"]};";
         $username = $config["db"]["username"];
         $password = $config["db"]["password"];
