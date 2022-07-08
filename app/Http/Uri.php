@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes;
+namespace App\Http;
 
 class Uri {
     public static function load() {

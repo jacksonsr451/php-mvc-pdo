@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Classes;
+namespace App\Http;
 
 use Exception;
 
 class Route { 
     private static array $routes;
-    private static $params;
+    private static Request $request;
+    private static array $params;
 
     public static function load($uri) {
         try {
@@ -27,7 +28,7 @@ class Route {
     private static function loadMethod($controller, $action) {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
-                $controller->$action(self::$params);
+                $controller->$action(self::$request);
                 break;
             
             default:
@@ -62,7 +63,7 @@ class Route {
     }
 
     public static function post($route, $controller) {
-        self::$params = $_POST;
+        self::$request = new Request();
         self::$routes[$route] = $controller;
     }
 

@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Http\Request;
 
 class UsersController extends Controller {
-    public function create($request) {
-        dd($request['id']);
+    public function create(Request $request) {
+        dd($request->all());
         die;
     }
 }
