@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <?php $layout->load(); ?>
+    <?php App\Controllers\Controller::load(); ?>
 
 </body>
 </html>
