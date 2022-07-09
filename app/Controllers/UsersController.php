@@ -17,8 +17,8 @@ class UsersController extends Controller {
         $this->view('users/home_users', ["users" => $this->users->all()]);
     }
 
-    public function show($id) {
-
+    public function show() {
+        $this->view("users/get_user");
     }
  
     public function create(Request $request) {

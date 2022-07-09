@@ -12,17 +12,37 @@ class Route {
     public static function load($uri) {
         try {
             if(!array_key_exists($uri, self::$routes)) {
-                throw new \Exception("Route dont exists {$uri}");
+                if (!self::validateUriWithParams($uri)) {
+                    throw new \Exception("Route dont exists {$uri}");
+                } else {
+                    // TODO: Melhorar a implementação de key
+                    $controller = self::getController(self::validateUriWithParams($uri)[key(self::validateUriWithParams($uri))]);        
+                    $controller = new $controller();
+                    $action = self::getMethod($controller, self::validateUriWithParams($uri)[key(self::validateUriWithParams($uri))]);
+                }
+            } else {
+                // TODO: Remover duplicação de código
+                $controller = self::getController(self::$routes[$uri]);
+                $controller = new $controller();
+                $action = self::getMethod($controller, self::$routes[$uri]);
             }
-    
-            $controller = self::getController(self::$routes[$uri]);
-            $controller = new $controller();
-            $action = self::getMethod($controller, self::$routes[$uri]);
 
             self::loadMethod($controller, $action);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
+    }
+
+    private static function validateUriWithParams($uri) {
+        $matcheUri = array_filter(
+            self::$routes,
+            function ($value) use ($uri) {
+                $regex = str_replace('/', '\/', ltrim($value, '/'));
+                return preg_match("/^{$regex}$/", ltrim($uri, '/'));
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+        return $matcheUri;
     }
 
     private static function loadMethod($controller, $action) {
