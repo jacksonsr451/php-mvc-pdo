@@ -7,7 +7,7 @@ use Exception;
 class Route { 
     private static array $routes;
     private static Request $request;
-    private static array $params;
+    private static array $params = [];
 
     public static function load($uri) {
         try {
@@ -57,10 +57,18 @@ class Route {
             case 'POST':
                 $controller->$action(self::$request);
                 break;
-            
+
+            case 'PUT':
+                $controller->$action(self::$params, self::$request);
+                break;
+
+            case 'DELETE';
+                $controller->$action(self::$params);
+                break;
+
             default:
-                if (self::$params) $controller->$action(self::$params);
-                else $controller->$action();
+                if (empty(self::$params)) $controller->$action();
+                else $controller->$action(self::$params);
                 break;
         }
     }

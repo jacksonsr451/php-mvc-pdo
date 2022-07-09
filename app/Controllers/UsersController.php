@@ -25,7 +25,7 @@ class UsersController extends Controller {
         
     }
 
-    public function delete($id) {
+    public function delete(array $params) {
 
     }
 }
