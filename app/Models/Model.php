@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Bind;
 use App\Models\Traits\PersistDB;
 
 abstract class Model {
@@ -12,7 +13,7 @@ abstract class Model {
 
     public function __construct()
     {
-        $this->connect = Connection::getConnection();
+        $this->connect = Bind::get('connect');
     }
  
     public function all() {
