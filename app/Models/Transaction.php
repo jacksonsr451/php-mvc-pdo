@@ -16,6 +16,10 @@ class Transaction extends Model {
         }
     }
 
+    public function model($model) {
+        return new $model();
+    }
+
     public function __get($name)
     {   
         if (!property_exists($this, $name)) {
