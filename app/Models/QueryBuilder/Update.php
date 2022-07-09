@@ -13,6 +13,7 @@ class Update {
     }
 
     public static function SQLUpdate($table, $attributes) {
+        $attributes = (array) $attributes;
         $sql = "UPDATE {$table} set ";
         unset($attributes[array_keys(self::$attributeWhere)[0]]);
 

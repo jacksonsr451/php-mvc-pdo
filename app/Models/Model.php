@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Http\Traits\PersistDB;
+use App\Models\Traits\PersistDB;
 
 abstract class Model {
     use PersistDB;
