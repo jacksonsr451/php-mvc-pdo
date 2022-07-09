@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use App\Http\Traits\PersistDB;
+
 abstract class Model {
+    use PersistDB;
+    
     protected $connect;
     protected $table;
 
