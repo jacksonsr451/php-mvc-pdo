@@ -15,17 +15,17 @@ class Route {
                 if (!self::validateUriWithParams($uri)) {
                     throw new \Exception("Route dont exists {$uri}");
                 } else {
-                    // TODO: Melhorar a implementação de key
-                    $controller = self::getController(self::validateUriWithParams($uri)[key(self::validateUriWithParams($uri))]);        
-                    $controller = new $controller();
-                    $action = self::getMethod($controller, self::validateUriWithParams($uri)[key(self::validateUriWithParams($uri))]);
+                    foreach (self::validateUriWithParams($uri) as $key => $value) {
+                        $route = $value;
+                    }
                 }
             } else {
-                // TODO: Remover duplicação de código
-                $controller = self::getController(self::$routes[$uri]);
-                $controller = new $controller();
-                $action = self::getMethod($controller, self::$routes[$uri]);
+                $route = self::$routes[$uri];
             }
+
+            $controller = self::getController($route);        
+            $controller = new $controller();
+            $action = self::getMethod($controller, $route);
 
             self::loadMethod($controller, $action);
         } catch (Exception $ex) {
