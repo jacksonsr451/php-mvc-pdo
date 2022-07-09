@@ -5,10 +5,14 @@ namespace App\Http;
 
 class Request {
     public function all() {
-        return $_POST;
+        return Validation::validate($_POST);
     }
 
     public function get($param) {
-        return $_POST[$param];
+        return Validation::validate($_POST[$param]);
+    }
+
+    public function _() {
+        return $_POST;
     }
 }
