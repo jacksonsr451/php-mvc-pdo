@@ -17,13 +17,12 @@ class UsersController extends Controller {
         $this->view('users/home_users', ["users" => $this->users->all()]);
     }
 
-    public function show() {
+    public function show(array $params) {
         $this->view("users/get_user");
     }
  
     public function create(Request $request) {
-        dd($request->all());
-        die;
+        
     }
 
     public function delete($id) {

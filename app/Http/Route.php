@@ -42,7 +42,14 @@ class Route {
             },
             ARRAY_FILTER_USE_KEY
         );
+        self::setParams($uri, key($matcheUri));
         return $matcheUri;
+    }
+
+    private static function setParams($uri, $route) {
+        $uri = explode('/', $uri);
+        $route = explode('/', $route);
+        self::$params = array_diff($uri, $route);
     }
 
     private static function loadMethod($controller, $action) {
@@ -52,7 +59,8 @@ class Route {
                 break;
             
             default:
-                $controller->$action();
+                if (self::$params) $controller->$action(self::$params);
+                else $controller->$action();
                 break;
         }
     }
