@@ -14,7 +14,7 @@ class UsersController extends Controller {
     }
 
     public function index() {
-        $this->view('users/index', ["users" => $this->users->all()]);
+        $this->view('users/home_users', ["users" => $this->users->all()]);
     }
 
     public function show($id) {
