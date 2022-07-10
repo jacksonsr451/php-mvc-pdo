@@ -2,8 +2,8 @@
 
 namespace App\Models\Traits;
 
-use App\Http\QueryBuilder\Insert;
-use App\Http\QueryBuilder\Update;
+use App\Models\QueryBuilder\Insert;
+use App\Models\QueryBuilder\Update;
 
 trait PersistDB {
 

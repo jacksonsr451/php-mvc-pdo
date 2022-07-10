@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\QueryBuilder;
+namespace App\Models\QueryBuilder;
 
 
 class Update {
