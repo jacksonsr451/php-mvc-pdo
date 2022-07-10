@@ -110,4 +110,9 @@ class Route {
     public static function put($route, $controller) {
         self::$routes[$route] = $controller;
     }
+ 
+    public static function middleware() {
+
+        return self::class;
+    }
 }
