@@ -58,3 +58,57 @@ class MeuController extends Controller {
     }
 }
 ```
+
+## Request
+
+As requests estão bem simples no momento, passando somente por filtro padrão do php.
+
+```php
+namespace App\Controllers;
+
+class MeuController extends Controller {
+    public function index(Request $request) {
+        echo $request->all();
+    }
+}
+```
+
+```php
+namespace App\Controllers;
+
+class MeuController extends Controller {
+    public function index(Request $request) {
+        echo $request->get("name");
+    }
+}
+```
+
+Por padrão está retornando objetos no all e o get
+
+```php
+namespace App\Controllers;
+
+class MeuController extends Controller {
+    public function index(Request $request) {
+        echo $request->_(); // Aqui retorna sem nada de filtro e como array
+    }
+}
+```
+
+## Validate
+
+A classe validation no momento só faz validação padrão do PHP, e tem que receber um array para filtrar os dados.
+
+```php
+namespace App\Controllers;
+
+use App\Http\Validation;
+
+class MeuController extends Controller {
+    public function index(Request $request) {
+        $value = $request->_();
+        
+        $value = Validation::validate($value);
+    }
+}
+```
