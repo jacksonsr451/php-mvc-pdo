@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Http\Request;
 use Closure;
+use Exception;
 
 class Queue {
     private array $middleware = [];
@@ -25,9 +26,20 @@ class Queue {
 
     public function next(Request $request) {
         if (empty($this->middleware)) return call_user_func_array($this->controller, $this->args);
-        echo "<pre>";
-        print_r($this->middleware);
-        echo "<pre>";
+        
+        $middleware = array_shift($this->middleware);
+        
+        if(!isset(self::$map[$middleware])) {
+            throw new Exception("Error this middleware {$middleware} dont exist in map!", 500);
+        }
+
+        $queue = $this;
+
+        $next = function ($request) use ($queue) {
+            return $queue->next($request);
+        };
+
+        return (new self::$map[$middleware])->handle($request, $next);
     }
 
 }
