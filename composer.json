@@ -11,6 +11,5 @@
         "name": "jacksonsr451",
         "email": "jackson.severino.rocha@escola.pr.gov.br"
     }],
-    "minimum-stability": "stable",
-    "require": {}
+    "minimum-stability": "stable"
 }

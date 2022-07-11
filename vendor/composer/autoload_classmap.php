@@ -6,7 +6,25 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Classes\\Routes' => $baseDir . '/app/Classes/Routes.php',
-    'App\\Classes\\Uri' => $baseDir . '/app/Classes/Uri.php',
+    'App\\Bind' => $baseDir . '/app/Bind.php',
+    'App\\Configs\\Middlewares\\TestMiddleware' => $baseDir . '/app/Configs/Middlewares/TestMiddleware.php',
+    'App\\Controllers\\Controller' => $baseDir . '/app/Controllers/Controller.php',
+    'App\\Controllers\\HomeController' => $baseDir . '/app/Controllers/HomeController.php',
+    'App\\Controllers\\UsersController' => $baseDir . '/app/Controllers/UsersController.php',
+    'App\\Http\\Middleware\\MiddlewareInterface' => $baseDir . '/app/Http/Middleware/MiddlewareInterface.php',
+    'App\\Http\\Middleware\\Queue' => $baseDir . '/app/Http/Middleware/Queue.php',
+    'App\\Http\\Request' => $baseDir . '/app/Http/Request.php',
+    'App\\Http\\Route' => $baseDir . '/app/Http/Route.php',
+    'App\\Http\\Uri' => $baseDir . '/app/Http/Uri.php',
+    'App\\Http\\Validation' => $baseDir . '/app/Http/Validation.php',
+    'App\\Http\\ValidationAbstract' => $baseDir . '/app/Http/ValidationAbstract.php',
+    'App\\Models\\Connection' => $baseDir . '/app/Models/Connection.php',
+    'App\\Models\\Model' => $baseDir . '/app/Models/Model.php',
+    'App\\Models\\PostModel' => $baseDir . '/app/Models/PostModel.php',
+    'App\\Models\\QueryBuilder\\Insert' => $baseDir . '/app/Models/QueryBuilder/Insert.php',
+    'App\\Models\\QueryBuilder\\Update' => $baseDir . '/app/Models/QueryBuilder/Update.php',
+    'App\\Models\\Traits\\PersistDB' => $baseDir . '/app/Models/Traits/PersistDB.php',
+    'App\\Models\\Transaction' => $baseDir . '/app/Models/Transaction.php',
+    'App\\Models\\UserModel' => $baseDir . '/app/Models/UserModel.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

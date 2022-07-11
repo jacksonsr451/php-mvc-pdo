@@ -21,8 +21,26 @@ class ComposerStaticInit61c605b98da07986f0a9f48146768c91
     );
 
     public static $classMap = array (
-        'App\\Classes\\Routes' => __DIR__ . '/../..' . '/app/Classes/Routes.php',
-        'App\\Classes\\Uri' => __DIR__ . '/../..' . '/app/Classes/Uri.php',
+        'App\\Bind' => __DIR__ . '/../..' . '/app/Bind.php',
+        'App\\Configs\\Middlewares\\TestMiddleware' => __DIR__ . '/../..' . '/app/Configs/Middlewares/TestMiddleware.php',
+        'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
+        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
+        'App\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Controllers/UsersController.php',
+        'App\\Http\\Middleware\\MiddlewareInterface' => __DIR__ . '/../..' . '/app/Http/Middleware/MiddlewareInterface.php',
+        'App\\Http\\Middleware\\Queue' => __DIR__ . '/../..' . '/app/Http/Middleware/Queue.php',
+        'App\\Http\\Request' => __DIR__ . '/../..' . '/app/Http/Request.php',
+        'App\\Http\\Route' => __DIR__ . '/../..' . '/app/Http/Route.php',
+        'App\\Http\\Uri' => __DIR__ . '/../..' . '/app/Http/Uri.php',
+        'App\\Http\\Validation' => __DIR__ . '/../..' . '/app/Http/Validation.php',
+        'App\\Http\\ValidationAbstract' => __DIR__ . '/../..' . '/app/Http/ValidationAbstract.php',
+        'App\\Models\\Connection' => __DIR__ . '/../..' . '/app/Models/Connection.php',
+        'App\\Models\\Model' => __DIR__ . '/../..' . '/app/Models/Model.php',
+        'App\\Models\\PostModel' => __DIR__ . '/../..' . '/app/Models/PostModel.php',
+        'App\\Models\\QueryBuilder\\Insert' => __DIR__ . '/../..' . '/app/Models/QueryBuilder/Insert.php',
+        'App\\Models\\QueryBuilder\\Update' => __DIR__ . '/../..' . '/app/Models/QueryBuilder/Update.php',
+        'App\\Models\\Traits\\PersistDB' => __DIR__ . '/../..' . '/app/Models/Traits/PersistDB.php',
+        'App\\Models\\Transaction' => __DIR__ . '/../..' . '/app/Models/Transaction.php',
+        'App\\Models\\UserModel' => __DIR__ . '/../..' . '/app/Models/UserModel.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
