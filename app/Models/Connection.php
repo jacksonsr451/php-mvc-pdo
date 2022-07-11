@@ -6,14 +6,17 @@ use PDO;
 use PDOException;
 
 class Connection {
-    protected static $pdo;
+    protected static $pdo;    
+
     public function __construct(){}
 
     private static function connect() {
-        $config = require_once(__DIR__ . "/../../config.php");
-        $setup = "mysql:host={$config["db"]["host"]};dbname={$config["db"]["db_name"]};charset={$config["db"]["charset"]};";
-        $username = $config["db"]["username"];
-        $password = $config["db"]["password"];
+        $host = getenv("HOST");
+        $dbName = getenv("DB_NAME");
+        $charset = getenv("CHARSET");
+        $username = getenv("USERNAME");
+        $password = getenv("PASSWORD");
+        $setup = "mysql:host={$host};dbname={$dbName};charset={$charset};";
         try{
             self::$pdo = new PDO( $setup, $username, $password);
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
