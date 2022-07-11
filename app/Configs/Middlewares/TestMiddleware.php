@@ -9,6 +9,6 @@ use Closure;
 class TestMiddleware implements MiddlewareInterface {
     public function handle(Request $request, Closure $next)
     {
-        echo "Hellow Middleware";
+        return $next($request);
     }
 }
