@@ -112,3 +112,21 @@ class MeuController extends Controller {
     }
 }
 ```
+
+## Middlewares
+
+Adcionando middlewares no projeto.
+
+Primeiro passo é adcionar como 3° parametro na rota, um array com a string que deseja usar para o middleware. O mesmo que vamos cadastrar no mapeamento de classes.
+
+```php
+use App\Http\Route;
+
+Route::get('/', "HomeController@index", ["middleware"]);
+
+Route::post('/users/create', "UserController@create");
+
+Route::put('/users/[0-9]+/update/', "UsersController@update");
+
+Route::get('/users/[0-9]+/delete/', "UsersController@delete");
+```
