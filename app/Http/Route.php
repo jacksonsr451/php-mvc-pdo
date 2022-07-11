@@ -9,6 +9,7 @@ class Route {
     private static array $routes;
     private static Request $request;
     private static array $params = [];
+    private static $route;
     private static array $middlewares = [];
 
     public static function load($uri) {
@@ -29,7 +30,7 @@ class Route {
             $controller = new $controller();
             $action = self::getMethod($controller, $route);
 
-            (new Queue(self::$middlewares, function () use ($controller, $action) {
+            (new Queue(self::$routes[self::$route]['middlewares'], function () use ($controller, $action) {
                 self::loadMethod($controller, $action); 
             }, []))->next(self::$request);
         } catch (Exception $ex) {
@@ -79,7 +80,7 @@ class Route {
     }
 
     private static function getController($routes) {
-        $classes = explode("@", $routes);
+        $classes = explode("@", $routes['controller']);
         $namespace = "App\\Controllers\\{$classes[0]}";
 
         if (!class_exists($namespace)) {
@@ -90,7 +91,7 @@ class Route {
     }
 
     private static function getMethod( $classes, $routes) {
-        $method = explode("@", $routes);
+        $method = explode("@", $routes['controller']);
 
         if (!method_exists($classes, $method[1])) {
             throw new \Exception("Method dont exists {$method[1]}");
@@ -100,24 +101,34 @@ class Route {
     }
 
     public static function get($route, $controller) {
-        self::$routes[$route] = $controller;
+        self::setRoute($route);
+        self::$routes[$route] = array('controller' => $controller, 'middlewares' => self::$middlewares);
     }
 
     public static function post($route, $controller) {
         self::$request = new Request();
-        self::$routes[$route] = $controller;
+        self::setRoute($route);
+        self::$routes[$route] = array('controller' => $controller, 'middlewares' => self::$middlewares);
     }
 
     public static function delete($route, $controller) {
-        self::$routes[$route] = $controller;
+        self::setRoute($route);
+        self::$routes[$route] = array('controller' => $controller, 'middlewares' => self::$middlewares);
     }
 
     public static function put($route, $controller) {
-        self::$routes[$route] = $controller;
+        self::setRoute($route);
+        self::$routes[$route] = array('controller' => $controller, 'middlewares' => self::$middlewares);
+    }
+
+    private static function setRoute($route) {
+        self::$route = $route;
     }
  
     public static function middleware(array $middlewares) {
-        self::$middlewares = $middlewares;
+        foreach ($middlewares as $key => $value) {
+            self::$middlewares[$key] = $value;
+        }
         return self::class;
     }
 }

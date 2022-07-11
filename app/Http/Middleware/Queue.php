@@ -25,6 +25,9 @@ class Queue {
 
     public function next(Request $request) {
         if (empty($this->middleware)) return call_user_func_array($this->controller, $this->args);
+        echo "<pre>";
+        print_r($this->middleware);
+        echo "<pre>";
     }
 
 }
