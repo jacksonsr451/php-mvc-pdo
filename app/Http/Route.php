@@ -2,12 +2,14 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Queue;
 use Exception;
 
 class Route { 
     private static array $routes;
     private static Request $request;
     private static array $params = [];
+    private static array $middlewares = [];
 
     public static function load($uri) {
         try {
@@ -27,9 +29,11 @@ class Route {
             $controller = new $controller();
             $action = self::getMethod($controller, $route);
 
-            self::loadMethod($controller, $action);
+            (new Queue(self::$middlewares, function () use ($controller, $action) {
+                self::loadMethod($controller, $action); 
+            }, []))->next(self::$request);
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            echo $ex->getMessage(); 
         }
     }
 
@@ -71,6 +75,7 @@ class Route {
                 else $controller->$action(self::$params);
                 break;
         }
+        return true;
     }
 
     private static function getController($routes) {
@@ -111,8 +116,8 @@ class Route {
         self::$routes[$route] = $controller;
     }
  
-    public static function middleware() {
-
+    public static function middleware(array $middlewares) {
+        self::$middlewares = $middlewares;
         return self::class;
     }
 }
