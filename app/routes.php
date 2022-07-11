@@ -2,7 +2,7 @@
 
 use App\Http\Route;
 
-Route::middleware(['middleware'])::get("/", "HomeController@index");
+Route::get("/", "HomeController@index", ['middleware']);
 
 Route::get("/users", "UsersController@index");
 Route::post("/users/add", "UsersController@create");
