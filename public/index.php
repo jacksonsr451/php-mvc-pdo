@@ -12,6 +12,4 @@ require_once(__DIR__ . "/../app/Setup.php");
 
 require_once(__DIR__ . "/../app/routes.php");
 
-$uri = Uri::load();
-
-Route::load($uri);
+Route::load(Uri::load());
