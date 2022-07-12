@@ -1,9 +1,7 @@
-<?php 
+<?php
 
 namespace App\Http;
 
-
-class Validation extends ValidationAbstract 
+class Validation extends ValidationAbstract
 {
-    
 }

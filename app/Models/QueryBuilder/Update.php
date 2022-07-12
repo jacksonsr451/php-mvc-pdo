@@ -2,8 +2,7 @@
 
 namespace App\Models\QueryBuilder;
 
-
-class Update 
+class Update
 {
     private static array $attributeWhere;
 

@@ -6,7 +6,7 @@ use App\Http\Request;
 use Closure;
 use Exception;
 
-class Queue 
+class Queue
 {
     private array $middleware = [];
     private Closure $controller;
@@ -22,23 +22,25 @@ class Queue
         $this->args = $args;
     }
 
-    public static function setMap($map): void 
+    public static function setMap($map): void
     {
         self::$map = $map;
     }
 
-    public static function setDefault($default): void 
+    public static function setDefault($default): void
     {
         self::$default = $default;
     }
 
     public function next(Request $request): mixed
     {
-        if (empty($this->middleware)) return call_user_func_array($this->controller, $this->args);
-        
+        if (empty($this->middleware)) {
+            return call_user_func_array($this->controller, $this->args);
+        }
+
         $middleware = array_shift($this->middleware);
-        
-        if(!isset(self::$map[$middleware])) {
+
+        if (!isset(self::$map[$middleware])) {
             throw new Exception("Error this middleware {$middleware} dont exist in map!", 500);
         }
 
@@ -48,7 +50,6 @@ class Queue
             return $queue->next($request);
         };
 
-        return (new self::$map[$middleware])->handle($request, $next);
+        return (new self::$map[$middleware]())->handle($request, $next);
     }
-
 }

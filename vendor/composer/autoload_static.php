@@ -26,6 +26,7 @@ class ComposerStaticInit61c605b98da07986f0a9f48146768c91
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
         'App\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Controllers/UsersController.php',
+        'App\\Dotenv' => __DIR__ . '/../..' . '/app/Dotenv.php',
         'App\\Http\\Middleware\\MiddlewareInterface' => __DIR__ . '/../..' . '/app/Http/Middleware/MiddlewareInterface.php',
         'App\\Http\\Middleware\\Queue' => __DIR__ . '/../..' . '/app/Http/Middleware/Queue.php',
         'App\\Http\\Request' => __DIR__ . '/../..' . '/app/Http/Request.php',

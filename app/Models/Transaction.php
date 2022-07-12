@@ -5,7 +5,7 @@ namespace App\Models;
 use Closure;
 use Exception;
 
-class Transaction extends Model 
+class Transaction extends Model
 {
     public function transaction(Closure $callback): void
     {
@@ -24,7 +24,7 @@ class Transaction extends Model
     }
 
     public function __get($name): mixed
-    {   
+    {
         if (!property_exists($this, $name)) {
             $model = __NAMESPACE__ . "\\" . $name;
             return new $model();

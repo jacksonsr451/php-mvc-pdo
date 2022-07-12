@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 namespace App\Models;
 
 use App\Bind;
 use App\Models\Traits\PersistDB;
 
-abstract class Model 
+abstract class Model
 {
     use PersistDB;
-    
+
     protected object $connect;
     protected string $table;
 
@@ -17,13 +17,13 @@ abstract class Model
         $this->table = $table;
         $this->connect = Bind::get('connect');
     }
- 
+
     public function all(): array
     {
         $sql = "SELECT * FROM {$this->table}";
         $list = $this->connect->prepare($sql);
         $list->execute();
-        
+
         return $list->fetchAll();
     }
 
@@ -36,7 +36,7 @@ abstract class Model
 
         return $list->fetch();
     }
-    
+
     public function delete($field, $value): bool
     {
         $sql = "DELETE FROM {$this->table} WHERE {$field} = ?";

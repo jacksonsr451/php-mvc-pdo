@@ -11,6 +11,7 @@ return array(
     'App\\Controllers\\Controller' => $baseDir . '/app/Controllers/Controller.php',
     'App\\Controllers\\HomeController' => $baseDir . '/app/Controllers/HomeController.php',
     'App\\Controllers\\UsersController' => $baseDir . '/app/Controllers/UsersController.php',
+    'App\\Dotenv' => $baseDir . '/app/Dotenv.php',
     'App\\Http\\Middleware\\MiddlewareInterface' => $baseDir . '/app/Http/Middleware/MiddlewareInterface.php',
     'App\\Http\\Middleware\\Queue' => $baseDir . '/app/Http/Middleware/Queue.php',
     'App\\Http\\Request' => $baseDir . '/app/Http/Request.php',

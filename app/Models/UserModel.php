@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace App\Models;
 
-class UserModel extends Model 
+class UserModel extends Model
 {
     public function __construct()
     {

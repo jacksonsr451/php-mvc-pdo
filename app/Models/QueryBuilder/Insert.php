@@ -2,10 +2,9 @@
 
 namespace App\Models\QueryBuilder;
 
-
-class Insert 
+class Insert
 {
-    public static function SQLInsert($table, $attributes): string 
+    public static function SQLInsert($table, $attributes): string
     {
         $attributes = (array) $attributes;
         $sql = "INSERT INTO {$table} (";

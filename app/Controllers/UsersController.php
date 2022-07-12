@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Http\Request;
 use App\Models\UserModel;
 
-class UsersController extends Controller 
+class UsersController extends Controller
 {
     public UserModel $users;
 
@@ -14,23 +14,21 @@ class UsersController extends Controller
         $this->users = new UserModel();
     }
 
-    public function index(): void 
+    public function index(): void
     {
         $this->view('users/home_users', ["users" => $this->users->all()]);
     }
 
-    public function show(array $params): void 
+    public function show(array $params): void
     {
         $this->view("users/get_user");
     }
- 
-    public function create(Request $request): void 
+
+    public function create(Request $request): void
     {
-        
     }
 
-    public function delete(array $params): void 
+    public function delete(array $params): void
     {
-
     }
 }

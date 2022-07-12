@@ -2,20 +2,19 @@
 
 namespace App\Http;
 
-
-class Request 
+class Request
 {
-    public function all(): object 
+    public function all(): object
     {
         return Validation::validate($_POST);
     }
 
-    public function get($param): object 
+    public function get($param): object
     {
         return Validation::validate($_POST[$param]);
     }
 
-    public function _(): array 
+    public function _(): array
     {
         return $_POST;
     }

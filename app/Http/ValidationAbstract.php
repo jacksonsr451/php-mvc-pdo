@@ -2,8 +2,7 @@
 
 namespace App\Http;
 
-
-abstract class ValidationAbstract 
+abstract class ValidationAbstract
 {
     private static array $validation = [];
     private static array $keys = [];
@@ -13,7 +12,7 @@ abstract class ValidationAbstract
         self::$keys = $this->fields();
     }
 
-    protected function fields(): array 
+    protected function fields(): array
     {
         return [
 

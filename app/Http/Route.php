@@ -5,8 +5,8 @@ namespace App\Http;
 use App\Http\Middleware\Queue;
 use Exception;
 
-class Route 
-{ 
+class Route
+{
     private static array $routes;
     private static Request $request;
     private static array $params = [];
@@ -14,7 +14,7 @@ class Route
     public static function load($uri): void
     {
         try {
-            if(! array_key_exists($uri, self::$routes)) {
+            if (! array_key_exists($uri, self::$routes)) {
                 if (! self::validateUriWithParams($uri)) {
                     throw new \Exception("Route dont exists {$uri}");
                 } else {
@@ -26,15 +26,15 @@ class Route
                 $route = self::$routes[$uri];
             }
 
-            $controller = self::getController($route);        
+            $controller = self::getController($route);
             $controller = new $controller();
             $action = self::getMethod($controller, $route);
 
             (new Queue($route['middlewares'], function () use ($controller, $action) {
-                self::loadMethod($controller, $action); 
+                self::loadMethod($controller, $action);
             }, []))->next(self::$request);
         } catch (Exception $ex) {
-            echo $ex->getMessage(); 
+            echo $ex->getMessage();
         }
     }
 
@@ -75,8 +75,11 @@ class Route
                 break;
 
             default:
-                if (empty(self::$params)) $controller->$action();
-                else $controller->$action(self::$params);
+                if (empty(self::$params)) {
+                    $controller->$action();
+                } else {
+                    $controller->$action(self::$params);
+                }
                 break;
         }
         return true;
@@ -94,7 +97,7 @@ class Route
         return $namespace;
     }
 
-    private static function getMethod( $classes, $routes): string
+    private static function getMethod($classes, $routes): string
     {
         $method = explode("@", $routes['controller']);
 
@@ -121,7 +124,7 @@ class Route
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
     }
 
-    public static function put($route, $controller, array $middlewares = []): void 
+    public static function put($route, $controller, array $middlewares = []): void
     {
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
     }
