@@ -4,13 +4,13 @@
 
 **Construindo uma aplicação *PHP*, com a finalidade de estudo, com rotas controles e classes de modelos utilizando de *PDO* e estrutura *MVC* para o projeto.**
 
-Há inumeros frameworks fantásticos para PHP, no mercado. Porém, com a finalidade de estudo, acho muito interesante a ideia de se construir do 0 toda a aplicação.
+Há inúmeros frameworks fantásticos para PHP, no mercado. Porém, com a finalidade de estudo, acho muito interesante a ideia de se construir do 0 toda a aplicação.
 
 Claro que a segurança e integridade que grandes frameworks chegam a ter, não conseguimos alcançar com este experimento. Mas nosso conhecimento chega a ter um BUM a mais.
 
 ## Começando com as Rotas
 
-Criei um arquivo simples no diretorio App, que recebe as Rotas de uma forma simples.
+Criei um arquivo simples no diretório App, que recebe as Rotas de uma forma simples.
 
 **GET, POST, PUT, DELETE**:
 
@@ -29,7 +29,7 @@ Desta forma, de maneira bem simplicada se declara Rotas.
 
 ## Bind values:
 
-Se preciso guardar infromações, há uma classe pronta para isto.
+Se preciso guardar informações, há uma classe pronta para isto.
 
 ```php
 use App\Bind;
@@ -47,7 +47,7 @@ $appName = Bind::get('app-name');
 
 ## Controllers
 
-Controllers quando precisar de parametros deve se usar array.
+Controllers quando precisar de parâmetros deve se usar array.
 
 ```php
 namespace App\Controllers;
@@ -107,7 +107,7 @@ use App\Http\Validation;
 class MeuController extends Controller {
     public function index(Request $request) {
         $value = $request->_();
-        
+
         $value = Validation::validate($value);
     }
 }
@@ -117,7 +117,7 @@ class MeuController extends Controller {
 
 Adcionando middlewares no projeto.
 
-Primeiro passo é adcionar como 3° parametro na rota, um array com a string que deseja usar para o middleware. O mesmo que vamos cadastrar no mapeamento de classes.
+Primeiro passo é adicionar como 3° parâmetro na rota, um array com a string que deseja usar para o middleware. O mesmo que vamos cadastrar no mapeamento de classes.
 
 ```php
 use App\Http\Route;
