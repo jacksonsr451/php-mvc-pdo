@@ -7,5 +7,5 @@ use Closure;
 
 interface MiddlewareInterface 
 {
-    public function handle(Request $request, Closure $next): Closure;
+    public function handle(Request $request, Closure $next): mixed;
 }

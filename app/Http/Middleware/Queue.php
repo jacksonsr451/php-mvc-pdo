@@ -32,7 +32,7 @@ class Queue
         self::$default = $default;
     }
 
-    public function next(Request $request): Closure
+    public function next(Request $request): mixed
     {
         if (empty($this->middleware)) return call_user_func_array($this->controller, $this->args);
         

@@ -9,7 +9,7 @@ use Exception;
 
 class TestMiddleware implements MiddlewareInterface 
 {
-    public function handle(Request $request, Closure $next): Closure
+    public function handle(Request $request, Closure $next): mixed
     {
         if (getenv("TESTE") == 'true') throw new Exception("Test ok", 200);
         return $next($request);
