@@ -1,0 +1,15 @@
+{
+    "name": "jacksonsr45/php-easy-http",
+    "autoload": {
+        "psr-4": {
+            "Jacksonsr45\\PhpEasyHttp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jacksonsr451",
+            "email": "jackson.severino.rocha@escola.pr.gov.br"
+        }
+    ],
+    "require": {}
+}
