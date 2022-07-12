@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Jacksonsr45\\PhpEasyHttp\\' => array($baseDir . '/src'),
+    'PhpEasyHttp\\' => array($baseDir . '/src'),
 );
