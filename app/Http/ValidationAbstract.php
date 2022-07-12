@@ -3,7 +3,8 @@
 namespace App\Http;
 
 
-abstract class ValidationAbstract {
+abstract class ValidationAbstract 
+{
     private static array $validation = [];
     private static array $keys = [];
 
@@ -12,14 +13,16 @@ abstract class ValidationAbstract {
         self::$keys = $this->fields();
     }
 
-    protected function fields() {
+    protected function fields(): array 
+    {
         return [
 
         ];
     }
 
-    public static function validate($request = []) {
-        if (!empty($request)) {
+    public static function validate($request = []): object
+    {
+        if (! empty($request)) {
             foreach ($request as $key => $value) {
                 self::$validation[$key] = filter_var($value, FILTER_DEFAULT);
             }

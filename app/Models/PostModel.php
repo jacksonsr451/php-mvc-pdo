@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
-class PostModel extends Model {
-    protected $table = "posts";
+class PostModel extends Model 
+{
+    public function __construct()
+    {
+        parent::__construct("posts");
+    }
 }

@@ -5,26 +5,30 @@ namespace App\Models;
 use App\Bind;
 use App\Models\Traits\PersistDB;
 
-abstract class Model {
+abstract class Model 
+{
     use PersistDB;
     
-    protected $connect;
-    protected $table;
+    protected object $connect;
+    protected string $table;
 
-    public function __construct()
+    public function __construct($table)
     {
+        $this->table = $table;
         $this->connect = Bind::get('connect');
     }
  
-    public function all() {
+    public function all(): array
+    {
         $sql = "SELECT * FROM {$this->table}";
         $list = $this->connect->prepare($sql);
         $list->execute();
-
+        
         return $list->fetchAll();
     }
 
-    public function find($field, $value) {
+    public function find($field, $value): mixed
+    {
         $sql = "SELECT * FROM {$this->table} WHERE {$field} = ?";
         $list = $this->connect->prepare($sql);
         $list->bindValue(1, $value);
@@ -33,7 +37,8 @@ abstract class Model {
         return $list->fetch();
     }
     
-    public function delete($field, $value) {
+    public function delete($field, $value): bool
+    {
         $sql = "DELETE FROM {$this->table} WHERE {$field} = ?";
         $delete = $this->connect->prepare($sql);
         $delete->bindValue(1, $value);

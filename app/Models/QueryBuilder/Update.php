@@ -3,16 +3,19 @@
 namespace App\Models\QueryBuilder;
 
 
-class Update {
+class Update 
+{
     private static array $attributeWhere;
 
-    public static function where($value) {
+    public static function where($value): mixed
+    {
         self::$attributeWhere = $value;
 
         return self::class;
     }
 
-    public static function SQLUpdate($table, $attributes) {
+    public static function SQLUpdate($table, $attributes): string
+    {
         $attributes = (array) $attributes;
         $sql = "UPDATE {$table} set ";
         unset($attributes[array_keys(self::$attributeWhere)[0]]);

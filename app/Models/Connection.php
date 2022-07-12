@@ -4,13 +4,15 @@ namespace App\Models;
 
 use PDO;
 use PDOException;
+use PDOStatement;
 
 class Connection {
-    protected static $pdo;    
+    protected static object $pdo;    
 
     public function __construct(){}
 
-    private static function connect() {
+    private static function connect(): void 
+    {
         $host = getenv("HOST");
         $dbName = getenv("DB_NAME");
         $charset = getenv("CHARSET");
@@ -26,7 +28,8 @@ class Connection {
         }
     }
 
-    public static function getConnection(){
+    public static function getConnection(): object
+    {
         self::connect();
         return self::$pdo;
     }

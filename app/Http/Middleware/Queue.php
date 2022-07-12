@@ -6,7 +6,8 @@ use App\Http\Request;
 use Closure;
 use Exception;
 
-class Queue {
+class Queue 
+{
     private array $middleware = [];
     private Closure $controller;
     private array $args = [];
@@ -21,15 +22,18 @@ class Queue {
         $this->args = $args;
     }
 
-    public static function setMap($map) {
+    public static function setMap($map): void 
+    {
         self::$map = $map;
     }
 
-    public static function setDefault($default) {
+    public static function setDefault($default): void 
+    {
         self::$default = $default;
     }
 
-    public function next(Request $request) {
+    public function next(Request $request): Closure
+    {
         if (empty($this->middleware)) return call_user_func_array($this->controller, $this->args);
         
         $middleware = array_shift($this->middleware);

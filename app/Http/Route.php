@@ -5,15 +5,17 @@ namespace App\Http;
 use App\Http\Middleware\Queue;
 use Exception;
 
-class Route { 
+class Route 
+{ 
     private static array $routes;
     private static Request $request;
     private static array $params = [];
 
-    public static function load($uri) {
+    public static function load($uri): void
+    {
         try {
-            if(!array_key_exists($uri, self::$routes)) {
-                if (!self::validateUriWithParams($uri)) {
+            if(! array_key_exists($uri, self::$routes)) {
+                if (! self::validateUriWithParams($uri)) {
                     throw new \Exception("Route dont exists {$uri}");
                 } else {
                     foreach (self::validateUriWithParams($uri) as $key => $value) {
@@ -36,7 +38,8 @@ class Route {
         }
     }
 
-    private static function validateUriWithParams($uri) {
+    private static function validateUriWithParams($uri): array
+    {
         $matcheUri = array_filter(
             self::$routes,
             function ($value) use ($uri) {
@@ -49,13 +52,15 @@ class Route {
         return $matcheUri;
     }
 
-    private static function setParams($uri, $route) {
+    private static function setParams($uri, $route): void
+    {
         $uri = explode('/', $uri);
         $route = explode('/', $route);
         self::$params = array_diff($uri, $route);
     }
 
-    private static function loadMethod($controller, $action) {
+    private static function loadMethod($controller, $action): bool
+    {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
                 $controller->$action(self::$request);
@@ -77,7 +82,8 @@ class Route {
         return true;
     }
 
-    private static function getController($routes) {
+    private static function getController($routes): string
+    {
         $classes = explode("@", $routes['controller']);
         $namespace = "App\\Controllers\\{$classes[0]}";
 
@@ -88,7 +94,8 @@ class Route {
         return $namespace;
     }
 
-    private static function getMethod( $classes, $routes) {
+    private static function getMethod( $classes, $routes): string
+    {
         $method = explode("@", $routes['controller']);
 
         if (!method_exists($classes, $method[1])) {
@@ -98,21 +105,24 @@ class Route {
         return $method[1];
     }
 
-    public static function get($route, $controller, array $middlewares = []) {
+    public static function get($route, $controller, array $middlewares = []): void
+    {
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
-        return self::class;
     }
 
-    public static function post($route, $controller, array $middlewares = []) {
+    public static function post($route, $controller, array $middlewares = []): void
+    {
         self::$request = new Request();
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
     }
 
-    public static function delete($route, $controller, array $middlewares = []) {
+    public static function delete($route, $controller, array $middlewares = []): void
+    {
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
     }
 
-    public static function put($route, $controller, array $middlewares = []) {
+    public static function put($route, $controller, array $middlewares = []): void 
+    {
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
     }
 }

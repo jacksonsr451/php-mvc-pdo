@@ -6,17 +6,18 @@ class Dotenv
 {
     protected static string $path;
 
-    public static function init(string $path) {
-        if(!file_exists($path)) {
+    public static function init(string $path): mixed
+    {
+        if(! file_exists($path)) {
             throw new \InvalidArgumentException(sprintf('%s does not exist', $path));
         }
         self::$path = $path;
         return self::class;
     }
 
-    public static function load() :void
+    public static function load(): void
     {
-        if (!is_readable(self::$path)) {
+        if (! is_readable(self::$path)) {
             throw new \RuntimeException(sprintf('%s file is not readable', self::$path));
         }
 
@@ -31,7 +32,7 @@ class Dotenv
             $name = trim($name);
             $value = trim($value);
 
-            if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
+            if (! array_key_exists($name, $_SERVER) && ! array_key_exists($name, $_ENV)) {
                 putenv(sprintf('%s=%s', $name, $value));
                 $_ENV[$name] = $value;
                 $_SERVER[$name] = $value;

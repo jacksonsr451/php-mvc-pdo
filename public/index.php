@@ -10,6 +10,6 @@ Dotenv::init(__DIR__ . "/../.env")::load();
 
 require_once(__DIR__ . "/../app/Setup.php");
 
-require_once(__DIR__ . "/../app/routes.php");
+require_once(__DIR__ . "/../app/Routes.php");
 
 Route::load(Uri::load());
