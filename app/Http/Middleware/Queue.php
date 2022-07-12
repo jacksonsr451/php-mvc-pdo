@@ -12,16 +12,21 @@ class Queue {
     private array $args = [];
 
     private static array $map = [];
+    private static array $default = [];
 
     public function __construct(array $middleware, Closure $controller, array $args)
     {
-        $this->middleware = $middleware;
+        $this->middleware = array_merge(self::$default, $middleware);
         $this->controller = $controller;
         $this->args = $args;
     }
 
     public static function setMap($map) {
         self::$map = $map;
+    }
+
+    public static function setDefault($default) {
+        self::$default = $default;
     }
 
     public function next(Request $request) {

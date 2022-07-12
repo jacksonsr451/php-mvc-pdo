@@ -11,3 +11,7 @@ Bind::add('connect', Connection::getConnection());
 MiddlewareQueue::setMap([
     "middleware" => TestMiddleware::class
 ]);
+
+MiddlewareQueue::setDefault([
+    "middleware"
+]);
