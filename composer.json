@@ -1,5 +1,5 @@
 {
-    "name": "jacksonsr45/php-mvc-pdo",
+    "name": "jacksonsr451/php-mvc-pdo",
     "description": "Um sistema simples em php",
     "license": "MIT",
     "autoload": {
@@ -11,8 +11,10 @@
         "name": "jacksonsr451",
         "email": "jackson.severino.rocha@escola.pr.gov.br"
     }],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "require": {},
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.7"
-    }
+    },
+    "prefer-stable": true
 }
