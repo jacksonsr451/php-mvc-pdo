@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Http\Request;
 use App\Models\UserModel;
+use PhpEasyHttp\HTTP\Message\Request;
 
 class UsersController extends Controller
 {
