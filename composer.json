@@ -5,7 +5,10 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "classmap": [
+            "vendor/jacksonsr451"
+        ]
     },
     "authors": [{
         "name": "jacksonsr451",
