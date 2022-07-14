@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use PhpEasyHttp\HTTP\Message\Request;
+use PhpEasyHttp\Http\Message\Interfaces\ServerRequestInterface;
 
 class UsersController extends Controller
 {
@@ -24,7 +24,7 @@ class UsersController extends Controller
         $this->view("users/get_user");
     }
 
-    public function create(Request $request): void
+    public function create(ServerRequestInterface $request): void
     {
         var_dump($request);
     }

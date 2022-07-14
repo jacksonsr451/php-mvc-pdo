@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Request;
 use Closure;
 use Exception;
+use PhpEasyHttp\Http\Message\Interfaces\ServerRequestInterface;
 
 class Queue
 {
@@ -32,7 +32,7 @@ class Queue
         self::$default = $default;
     }
 
-    public function next(Request $request): mixed
+    public function next(ServerRequestInterface $request): mixed
     {
         if (empty($this->middleware)) {
             return call_user_func_array($this->controller, $this->args);
@@ -44,7 +44,7 @@ class Queue
             throw new Exception("Error this middleware {$middleware} dont exist in map!", 500);
         }
 
-        $queue = $this;
+        $queue = clone $this;
 
         $next = function ($request) use ($queue) {
             return $queue->next($request);

@@ -4,26 +4,29 @@ namespace App\Http;
 
 use App\Http\Middleware\Queue;
 use Exception;
+use PhpEasyHttp\Http\Message\Interfaces\ServerRequestInterface;
+use PhpEasyHttp\Http\Message\ServerRequest;
 
 class Route
 {
     private static array $routes;
-    private static Request $request;
+    private static ServerRequestInterface $request;
     private static array $params = [];
 
     public static function load($uri): void
     {
+        $path = $uri->getPath();
         try {
-            if (! array_key_exists($uri, self::$routes)) {
-                if (! self::validateUriWithParams($uri)) {
-                    throw new Exception("Route dont exists {$uri}");
+            if (! array_key_exists($path, self::$routes)) {
+                if (! self::validateUriWithParams($path)) {
+                    throw new Exception("Route dont exists {$path}");
                 } else {
-                    foreach (self::validateUriWithParams($uri) as $key => $value) {
+                    foreach (self::validateUriWithParams($path) as $key => $value) {
                         $route = $value;
                     }
                 }
             } else {
-                $route = self::$routes[$uri];
+                $route = self::$routes[$path];
             }
 
             $controller = self::getController($route);
@@ -43,6 +46,9 @@ class Route
         $matcheUri = array_filter(
             self::$routes,
             function ($value) use ($uri) {
+                echo "<pre>";
+                print_r($uri);
+                echo "<pre>";
                 $regex = str_replace('/', '\/', ltrim($value, '/'));
                 return preg_match("/^{$regex}$/", ltrim($uri, '/'));
             },
@@ -115,7 +121,12 @@ class Route
 
     public static function post($route, $controller, array $middlewares = []): void
     {
-        self::$request = new Request();
+        self::$request = new ServerRequest(
+            'POST',
+            headers_list(),
+            $_SERVER,
+            $_COOKIE,
+        );
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
     }
 

@@ -7,7 +7,7 @@
             "App\\": "app/"
         },
         "classmap": [
-            "vendor/jacksonsr451"
+            "vendor/jacksonsr451/"
         ]
     },
     "authors": [{

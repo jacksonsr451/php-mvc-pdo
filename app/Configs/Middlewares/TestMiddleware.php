@@ -3,13 +3,13 @@
 namespace App\Configs\Middlewares;
 
 use App\Http\Middleware\MiddlewareInterface;
-use App\Http\Request;
 use Closure;
 use Exception;
+use PhpEasyHttp\Http\Message\Interfaces\ServerRequestInterface;
 
 class TestMiddleware implements MiddlewareInterface
 {
-    public function handle(Request $request, Closure $next): mixed
+    public function handle(ServerRequestInterface $request, Closure $next): mixed
     {
         if (getenv("TESTE") == 'true') {
             throw new Exception("Test ok", 200);

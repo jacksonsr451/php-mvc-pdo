@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Request;
 use Closure;
+use PhpEasyHttp\Http\Message\Interfaces\ServerRequestInterface;
 
 interface MiddlewareInterface
 {
-    public function handle(Request $request, Closure $next): mixed;
+    public function handle(ServerRequestInterface $request, Closure $next): mixed;
 }
