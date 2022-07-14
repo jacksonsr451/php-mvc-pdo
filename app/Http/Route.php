@@ -16,7 +16,7 @@ class Route
         try {
             if (! array_key_exists($uri, self::$routes)) {
                 if (! self::validateUriWithParams($uri)) {
-                    throw new \Exception("Route dont exists {$uri}");
+                    throw new Exception("Route dont exists {$uri}");
                 } else {
                     foreach (self::validateUriWithParams($uri) as $key => $value) {
                         $route = $value;
@@ -91,7 +91,7 @@ class Route
         $namespace = "App\\Controllers\\{$classes[0]}";
 
         if (!class_exists($namespace)) {
-            throw new \Exception("Class dont exists {$classes[0]}");
+            throw new Exception("Class dont exists {$classes[0]}");
         }
 
         return $namespace;
@@ -102,7 +102,7 @@ class Route
         $method = explode("@", $routes['controller']);
 
         if (!method_exists($classes, $method[1])) {
-            throw new \Exception("Method dont exists {$method[1]}");
+            throw new Exception("Method dont exists {$method[1]}");
         }
 
         return $method[1];
