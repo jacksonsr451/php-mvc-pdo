@@ -12,9 +12,11 @@
         "email": "jackson.severino.rocha@escola.pr.gov.br"
     }],
     "minimum-stability": "dev",
-    "require": {},
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.7"
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require": {
+        "jacksonsr451/php-easy-http": "dev-master"
+    }
 }
