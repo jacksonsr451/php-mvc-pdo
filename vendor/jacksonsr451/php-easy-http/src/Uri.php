@@ -82,8 +82,7 @@ class Uri implements UriInterface
 	
 	public function getPath(): string 
     {
-        $path = trim($this->path, '/');
-        return '/' . $this->path;
+        return $this->path;
 	}
 	
 	public function getQuery(): string 

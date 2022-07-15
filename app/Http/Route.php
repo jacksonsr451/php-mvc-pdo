@@ -5,17 +5,21 @@ namespace App\Http;
 use App\Http\Middleware\Queue;
 use Exception;
 use PhpEasyHttp\Http\Message\Interfaces\ServerRequestInterface;
+use PhpEasyHttp\Http\Message\Interfaces\UriInterface;
 use PhpEasyHttp\Http\Message\ServerRequest;
+use PhpEasyHttp\Http\Message\Uri;
 
 class Route
 {
     private static array $routes;
-    private static ServerRequestInterface $request;
     private static array $params = [];
 
-    public static function load($uri): void
+    private static ServerRequestInterface $request;
+
+    public static function load(): void
     {
-        $path = $uri->getPath();
+        $path = self::getUri()->getPath();
+        $request = self::getRequest();
         try {
             if (! array_key_exists($path, self::$routes)) {
                 if (! self::validateUriWithParams($path)) {
@@ -33,12 +37,33 @@ class Route
             $controller = new $controller();
             $action = self::getMethod($controller, $route);
 
-            (new Queue($route['middlewares'], function () use ($controller, $action) {
-                self::loadMethod($controller, $action);
-            }, []))->next(self::$request);
+            (new Queue($route['middlewares'], function () use ($controller, $action, $request) {
+                self::loadMethod($controller, $action, $request);
+            }, []))->next($request);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
+    }
+
+    private static function getUri(): UriInterface
+    {
+        $scheme = "http";
+        if ($_SERVER[ "SERVER_PORT" ] === 443) $scheme = "https"; 
+        if (in_array('QUERY_STING', $_SERVER)) {
+            return new Uri(sprintf('%s://%s%s%s', $scheme, $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'], $_SERVER['QUERY_STING'] === '' ? '' : '?'.$_SERVER['QUERY_STING']));
+        }
+        return new Uri(sprintf('%s://%s%s%s', $scheme, $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'], ''));
+    }
+
+    private static function getRequest(): ServerRequestInterface 
+    {
+        return new ServerRequest(
+            $_SERVER['REQUEST_METHOD'],
+            self::getUri(),
+            headers_list(),
+            $_SERVER,
+            $_COOKIE
+        );
     }
 
     private static function validateUriWithParams($uri): array
@@ -46,9 +71,6 @@ class Route
         $matcheUri = array_filter(
             self::$routes,
             function ($value) use ($uri) {
-                echo "<pre>";
-                print_r($uri);
-                echo "<pre>";
                 $regex = str_replace('/', '\/', ltrim($value, '/'));
                 return preg_match("/^{$regex}$/", ltrim($uri, '/'));
             },
@@ -65,15 +87,15 @@ class Route
         self::$params = array_diff($uri, $route);
     }
 
-    private static function loadMethod($controller, $action): bool
+    private static function loadMethod($controller, $action, $request): bool
     {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
-                $controller->$action(self::$request);
+                $controller->$action($request);
                 break;
 
             case 'PUT':
-                $controller->$action(self::$params, self::$request);
+                $controller->$action(self::$params, $request);
                 break;
 
             case 'DELETE';
@@ -121,12 +143,6 @@ class Route
 
     public static function post($route, $controller, array $middlewares = []): void
     {
-        self::$request = new ServerRequest(
-            'POST',
-            headers_list(),
-            $_SERVER,
-            $_COOKIE,
-        );
         self::$routes[$route] = array('controller' => $controller, 'middlewares' => $middlewares);
     }
 
