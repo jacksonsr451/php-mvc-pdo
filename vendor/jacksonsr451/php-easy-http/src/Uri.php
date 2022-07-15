@@ -28,6 +28,7 @@ class Uri implements UriInterface
         $this->setPort($uriParts['port'] ?? null);
         $this->user = $uriParts['user'] ?? '';
         $this->password = $uriParts['password'] ?? null;
+        if (substr($uriParts['path'], -1, 1) !== '/') $uriParts['path'] = $uriParts['path'] . "/";
         $this->path = $uriParts['path'] ?? '';
         $this->query = $uriParts['query'] ?? '';
         $this->fragment = $uriParts['fragments'] ?? '';
