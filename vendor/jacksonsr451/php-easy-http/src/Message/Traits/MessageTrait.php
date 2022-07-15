@@ -4,7 +4,7 @@ namespace PhpEasyHttp\Http\Message\Traits;
 
 use InvalidArgumentException;
 use PhpEasyHttp\Http\Message\Interfaces\StreamInterface;
-use PhpEasyHttp\HTTP\Message\Stream;
+use PhpEasyHttp\Http\Message\Stream;
 
 trait MessageTrait 
 {

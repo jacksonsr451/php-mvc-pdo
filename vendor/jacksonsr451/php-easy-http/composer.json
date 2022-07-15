@@ -6,7 +6,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "PhpEasyHttp\\Http\\Message\\": "src/"
+            "PhpEasyHttp\\Http\\": "src/"
         }
     },
     "authors": [{
