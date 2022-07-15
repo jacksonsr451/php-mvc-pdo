@@ -2,7 +2,7 @@
 
 namespace PhpEasyHttp\Http\Message\Interfaces;
 
-interface MessageInterface 
+interface MessageInterface
 {
 
     public function getProtocolVersion(): string;
@@ -30,5 +30,4 @@ interface MessageInterface
     public function setHeaders(array $headers): void;
 
     public function setBody($body): void;
-
 }

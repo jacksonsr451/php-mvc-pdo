@@ -14,7 +14,7 @@ class Queue
 
     private static array $map = [];
     private static array $default = [];
-
+ 
     public function __construct(array $middleware, Closure $controller, array $args)
     {
         $this->middleware = array_merge(self::$default, $middleware);

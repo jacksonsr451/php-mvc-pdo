@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace PhpEasyHttp\Http\Message\Traits;
 
@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use PhpEasyHttp\Http\Message\Uri;
 use PhpEasyHttp\Http\Message\Interfaces\UriInterface;
 
-trait RequestTrait 
+trait RequestTrait
 {
     protected string $requestTarget;
     protected string $method;
@@ -16,41 +16,45 @@ trait RequestTrait
         'post', 'get', 'delete', 'put', 'patch', 'head', 'options'
     ];
     
-    public function getRequestTarget(): string 
+    public function getRequestTarget(): string
     {
         return $this->requestTarget;
-	}
-	
-	public function withRequestTarget($requestTarget): self 
+    }
+    
+    public function withRequestTarget($requestTarget): self
     {
-        if ($this->requestTarget === $requestTarget) return $this;
+        if ($this->requestTarget === $requestTarget) {
+            return $this;
+        }
         $clone = clone $this;
         $clone->requestTarget = $requestTarget;
         return $clone;
-	}
-	
-	public function getMethod(): string 
+    }
+    
+    public function getMethod(): string
     {
         return $this->method;
-	}
-	
-	public function withMethod($method): self 
+    }
+    
+    public function withMethod($method): self
     {
-        if ($this->method === $method) return $this;
+        if ($this->method === $method) {
+            return $this;
+        }
         if (! in_array($method, $this->validMethods)) {
             throw new InvalidArgumentException("Only " . implode(', ', $this->validMethods) . ' are acceptable');
         }
         $clone = clone $this;
         $clone->method = strtolower($method);
         return $clone;
-	}
-	
-	public function getUri(): UriInterface 
+    }
+    
+    public function getUri(): UriInterface
     {
         return $this->uri;
-	}
-	
-	public function withUri(UriInterface $uri, $preserveHost = false): self 
+    }
+    
+    public function withUri(UriInterface $uri, $preserveHost = false): self
     {
         $clone = clone $this;
         
@@ -59,11 +63,13 @@ trait RequestTrait
         }
 
         return $clone;
-	}
+    }
 
     private function setUri($uri): void
     {
-        if (is_string($uri)) $uri = new Uri($uri);
+        if (is_string($uri)) {
+            $uri = new Uri($uri);
+        }
         $this->uri = $uri;
     }
 }

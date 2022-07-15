@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace PhpEasyHttp\Http\Message;
 
@@ -72,18 +72,26 @@ class UploadFiles implements UploadFileInterface
 
     private function validateActive(): void
     {
-        if (UPLOAD_ERR_OK !== $this->error) throw new RuntimeException('Cannot retrieve stream due to upload error');
+        if (UPLOAD_ERR_OK !== $this->error) {
+            throw new RuntimeException('Cannot retrieve stream due to upload error');
+        }
 
-        if ($this->moved) throw new RuntimeException('Cannot retrieve stream after it has already been moved');
+        if ($this->moved) {
+            throw new RuntimeException('Cannot retrieve stream after it has already been moved');
+        }
     }
 
     public function getStream(): StreamInterface
     {
         $this->validateActive();
 
-        if ($this->stream instanceof StreamInterface) return $this->stream;
+        if ($this->stream instanceof StreamInterface) {
+            return $this->stream;
+        }
 
-        if (false === $resource = fopen($this->file, 'r')) throw new RuntimeException(sprintf('The file "%s" cannot be opened: %s', $this->file, error_get_last()['message'] ?? ''));
+        if (false === $resource = fopen($this->file, 'r')) {
+            throw new RuntimeException(sprintf('The file "%s" cannot be opened: %s', $this->file, error_get_last()['message'] ?? ''));
+        }
 
         return new Stream($resource);
     }
@@ -92,14 +100,20 @@ class UploadFiles implements UploadFileInterface
     {
         $this->validateActive();
 
-        if (! is_string($targetPath) || '' === $targetPath) throw new InvalidArgumentException('Invalid path provided for move operation; must be a non-empty string');
+        if (! is_string($targetPath) || '' === $targetPath) {
+            throw new InvalidArgumentException('Invalid path provided for move operation; must be a non-empty string');
+        }
 
         if (null !== $this->file) {
             $this->moved = 'cli' === PHP_SAPI ? rename($this->file, $targetPath) : move_uploaded_file($this->file, $targetPath);
-            if (false === $this->moved) throw new RuntimeException(sprintf('Uploaded file could not be moved to "%s": %s', $targetPath, error_get_last()['message'] ?? ''));
+            if (false === $this->moved) {
+                throw new RuntimeException(sprintf('Uploaded file could not be moved to "%s": %s', $targetPath, error_get_last()['message'] ?? ''));
+            }
         } else {
             $stream = $this->getStream();
-            if ($stream->isSeekable()) $stream->rewind();
+            if ($stream->isSeekable()) {
+                $stream->rewind();
+            }
 
             if (false === $resource = fopen($targetPath, 'w')) {
                 throw new RuntimeException(sprintf('The file "%s" cannot be opened: %s', $targetPath, error_get_last()['message'] ?? ''));
@@ -108,7 +122,9 @@ class UploadFiles implements UploadFileInterface
             $dest = new Stream($resource);
 
             while (! $stream->eof()) {
-                if (! $dest->write($stream->read(1048576))) break;
+                if (! $dest->write($stream->read(1048576))) {
+                    break;
+                }
             }
             $this->moved = true;
         }

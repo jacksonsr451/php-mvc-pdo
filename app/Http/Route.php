@@ -48,14 +48,16 @@ class Route
     private static function getUri(): UriInterface
     {
         $scheme = "http";
-        if ($_SERVER[ "SERVER_PORT" ] === 443) $scheme = "https"; 
+        if ($_SERVER[ "SERVER_PORT" ] === 443) {
+            $scheme = "https";
+        }
         if (in_array('QUERY_STING', $_SERVER)) {
             return new Uri(sprintf('%s://%s%s%s', $scheme, $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'], $_SERVER['QUERY_STING'] === '' ? '' : '?'.$_SERVER['QUERY_STING']));
         }
         return new Uri(sprintf('%s://%s%s%s', $scheme, $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'], ''));
     }
 
-    private static function getRequest(): ServerRequestInterface 
+    private static function getRequest(): ServerRequestInterface
     {
         return new ServerRequest(
             $_SERVER['REQUEST_METHOD'],

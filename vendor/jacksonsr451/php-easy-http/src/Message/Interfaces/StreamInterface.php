@@ -2,7 +2,7 @@
 
 namespace PhpEasyHttp\Http\Message\Interfaces;
 
-interface StreamInterface 
+interface StreamInterface
 {
     public function __toString(): string;
 

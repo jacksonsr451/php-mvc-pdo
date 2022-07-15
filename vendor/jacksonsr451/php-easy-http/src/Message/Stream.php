@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace PhpEasyHttp\Http\Message;
 
@@ -9,7 +9,7 @@ use Throwable;
 
 class Stream implements StreamInterface
 {
-	private mixed $stream;
+    private mixed $stream;
     private int|null $size;
     private null|bool $seekable;
     private null|bool $writable;
@@ -37,122 +37,156 @@ class Stream implements StreamInterface
         $this->readable = false;
 
         $this->stream = $body;
-        if ($this->isSeekable()) fseek($body, 0, SEEK_CUR);
+        if ($this->isSeekable()) {
+            fseek($body, 0, SEEK_CUR);
+        }
     }
 
-	public function close(): void 
+    public function close(): void
     {
-        if (is_resource($this->stream)) fclose($this->stream);
+        if (is_resource($this->stream)) {
+            fclose($this->stream);
+        }
         $this->detach();
     }
-	
-	public function detach(): mixed 
+    
+    public function detach(): mixed
     {
         $resource = $this->stream;
         unset($this->stream);
         return $resource;
-	}
-	
-	public function getSize(): int|null 
+    }
+    
+    public function getSize(): int|null
     {
-        if ($this->size !== null) return $this->size;
+        if ($this->size !== null) {
+            return $this->size;
+        }
 
-        if ($this->stream === null) return null;
+        if ($this->stream === null) {
+            return null;
+        }
 
         $status = fstat($this->stream);
         $this->size = $status['size'] ?? null;
         return $this->size;
-	}
-	
-	public function tell(): int 
+    }
+    
+    public function tell(): int
     {
-        if ($this->stream === null) throw new RuntimeException("Unable to get current possition!"); 
+        if ($this->stream === null) {
+            throw new RuntimeException("Unable to get current possition!");
+        }
         $possition = ftell($this->stream);
 
-        if (! $possition) throw new RuntimeException("Unable to get current possition!");
+        if (! $possition) {
+            throw new RuntimeException("Unable to get current possition!");
+        }
 
         return $possition;
-	}
-	
-	public function eof(): bool 
+    }
+    
+    public function eof(): bool
     {
         return $this->stream !== null && feof($this->stream);
-	}
-	
-	public function isSeekable(): bool 
+    }
+    
+    public function isSeekable(): bool
     {
         if ($this->seekable === null) {
             $this->seekable = $this->getMetadata('seekable') ?? false;
         }
 
         return $this->seekable;
-	}
-	
-	public function seek($offset, $whence = SEEK_SET): void 
+    }
+    
+    public function seek($offset, $whence = SEEK_SET): void
     {
-        if (! $this->isSeekable()) throw new RuntimeException("Stream is not seekable!");
-        if( fseek($this->stream, $offset, $whence) === -1 ) {
+        if (! $this->isSeekable()) {
+            throw new RuntimeException("Stream is not seekable!");
+        }
+        if (fseek($this->stream, $offset, $whence) === -1) {
             throw new RuntimeException("Unable to seek stream position {$offset}!");
         }
-	}
-	
-    public function rewind(): void 
+    }
+    
+    public function rewind(): void
     {
         $this->seek(0);
-	}
-	
-	public function isWritable(): bool 
+    }
+    
+    public function isWritable(): bool
     {
-        if (! is_resource($this->stream)) return false;
+        if (! is_resource($this->stream)) {
+            return false;
+        }
         if ($this->writable === null) {
             $mode = $this->writable = $this->getMetadata('mode');
             $this->writable = in_array($mode, self::READ_WRITE_MODE['write']);
         }
         return $this->writable;
-	}
-	
-	public function write($string): int 
+    }
+    
+    public function write($string): int
     {
-        if ($this->isWritable()) throw new RuntimeException('Stream is not writable');
+        if ($this->isWritable()) {
+            throw new RuntimeException('Stream is not writable');
+        }
         $result = fwrite($this->stream, $string);
-        if ($result === false) throw new RuntimeException("Unable to write to stream!");
+        if ($result === false) {
+            throw new RuntimeException("Unable to write to stream!");
+        }
         return $result;
-	}
-	
-	public function isReadable(): bool 
+    }
+    
+    public function isReadable(): bool
     {
-        if (! is_resource($this->stream)) return false;
+        if (! is_resource($this->stream)) {
+            return false;
+        }
         if ($this->readable === null) {
             $mode = $this->readable = $this->getMetadata('mode');
             $this->readable = in_array($mode, self::READ_WRITE_MODE['read']);
         }
-        return $this->readable;   
-	}
-	
-	public function read($length): string 
+        return $this->readable;
+    }
+    
+    public function read($length): string
     {
-        if ($this->isReadable()) throw new RuntimeException('Stream is not readable');
+        if ($this->isReadable()) {
+            throw new RuntimeException('Stream is not readable');
+        }
         $result = fread($this->stream, $length);
-        if ($result === false) throw new RuntimeException("Unable to read the stream!");
+        if ($result === false) {
+            throw new RuntimeException("Unable to read the stream!");
+        }
         return $result;
-	}
-	
-	public function getContents(): string 
+    }
+    
+    public function getContents(): string
     {
-        if (! is_resource($this->stream)) throw new RuntimeException("Unable to read stream contents!");
+        if (! is_resource($this->stream)) {
+            throw new RuntimeException("Unable to read stream contents!");
+        }
         $contents = stream_get_contents($this->stream);
-        if ($contents === false) throw new RuntimeException("Unable to read stream contents!");
+        if ($contents === false) {
+            throw new RuntimeException("Unable to read stream contents!");
+        }
         return $contents;
-	}
-	
-	public function getMetadata($key = null): mixed 
+    }
+    
+    public function getMetadata($key = null): mixed
     {
-        if ($this->stream === null) return $key === null ? null : [];
+        if ($this->stream === null) {
+            return $key === null ? null : [];
+        }
         $meta = stream_get_meta_data($this->stream);
-        if ($key === null) return $meta;
+        if ($key === null) {
+            return $meta;
+        }
         return $meta[$key] ?? null;
-	}
-	public function __toString(): string 
+    }
+    public function __toString(): string
     {
         try {
             if ($this->isSeekable()) {
@@ -162,5 +196,5 @@ class Stream implements StreamInterface
         } catch (Throwable $th) {
             return '';
         }
-	}
+    }
 }

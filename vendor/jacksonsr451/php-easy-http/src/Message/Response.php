@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace PhpEasyHttp\Http\Message;
 
@@ -85,23 +85,26 @@ class Response implements ResponseInterface
         $this->protocol = $version;
     }
 
-	public function getStatusCode(): int 
+    public function getStatusCode(): int
     {
         return $this->code;
-	}
-	
-	public function withStatus($code, $reasonPhrase = ''): self
+    }
+    
+    public function withStatus($code, $reasonPhrase = ''): self
     {
-        if (! is_int($code)) throw new InvalidArgumentException("Argument {$code} must be integer only!");
-        if ($this->code === $code) return $this;
+        if (! is_int($code)) {
+            throw new InvalidArgumentException("Argument {$code} must be integer only!");
+        }
+        if ($this->code === $code) {
+            return $this;
+        }
         $clone = clone $this;
         $clone->code = $code;
         return $clone;
-	}
-	
-	public function getReasonPhrase(): string 
+    }
+    
+    public function getReasonPhrase(): string
     {
         return self::REASON_PHRASE[$this->code] ?? '';
-	}
-
+    }
 }
