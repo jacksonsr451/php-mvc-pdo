@@ -7,15 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Bind' => $baseDir . '/app/Bind.php',
-    'App\\Configs\\Middlewares\\TestMiddleware' => $baseDir . '/app/Configs/Middlewares/TestMiddleware.php',
     'App\\Controllers\\Controller' => $baseDir . '/app/Controllers/Controller.php',
     'App\\Controllers\\HomeController' => $baseDir . '/app/Controllers/HomeController.php',
     'App\\Controllers\\UsersController' => $baseDir . '/app/Controllers/UsersController.php',
     'App\\Dotenv' => $baseDir . '/app/Dotenv.php',
-    'App\\Http\\Middleware\\MiddlewareInterface' => $baseDir . '/app/Http/Middleware/MiddlewareInterface.php',
-    'App\\Http\\Middleware\\Queue' => $baseDir . '/app/Http/Middleware/Queue.php',
-    'App\\Http\\Request' => $baseDir . '/app/Http/Request.php',
-    'App\\Http\\Route' => $baseDir . '/app/Http/Route.php',
+    'App\\Http\\Middlewares\\TestMiddleware' => $baseDir . '/app/Http/Middlewares/TestMiddleware.php',
     'App\\Http\\Validation' => $baseDir . '/app/Http/Validation.php',
     'App\\Http\\ValidationAbstract' => $baseDir . '/app/Http/ValidationAbstract.php',
     'App\\Models\\Connection' => $baseDir . '/app/Models/Connection.php',

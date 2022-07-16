@@ -30,15 +30,11 @@ class ComposerStaticInit61c605b98da07986f0a9f48146768c91
 
     public static $classMap = array (
         'App\\Bind' => __DIR__ . '/../..' . '/app/Bind.php',
-        'App\\Configs\\Middlewares\\TestMiddleware' => __DIR__ . '/../..' . '/app/Configs/Middlewares/TestMiddleware.php',
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
         'App\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Controllers/UsersController.php',
         'App\\Dotenv' => __DIR__ . '/../..' . '/app/Dotenv.php',
-        'App\\Http\\Middleware\\MiddlewareInterface' => __DIR__ . '/../..' . '/app/Http/Middleware/MiddlewareInterface.php',
-        'App\\Http\\Middleware\\Queue' => __DIR__ . '/../..' . '/app/Http/Middleware/Queue.php',
-        'App\\Http\\Request' => __DIR__ . '/../..' . '/app/Http/Request.php',
-        'App\\Http\\Route' => __DIR__ . '/../..' . '/app/Http/Route.php',
+        'App\\Http\\Middlewares\\TestMiddleware' => __DIR__ . '/../..' . '/app/Http/Middlewares/TestMiddleware.php',
         'App\\Http\\Validation' => __DIR__ . '/../..' . '/app/Http/Validation.php',
         'App\\Http\\ValidationAbstract' => __DIR__ . '/../..' . '/app/Http/ValidationAbstract.php',
         'App\\Models\\Connection' => __DIR__ . '/../..' . '/app/Models/Connection.php',
