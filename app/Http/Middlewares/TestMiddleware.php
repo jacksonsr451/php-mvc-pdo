@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Configs\Middlewares;
+namespace App\Http\Middlewares;
 
 use Exception;
 use PhpEasyHttp\Http\Message\Interfaces\ResponseInterface;

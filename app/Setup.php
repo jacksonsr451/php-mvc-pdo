@@ -1,17 +1,16 @@
 <?php
 
 use App\Bind;
-use App\Configs\Middlewares\TestMiddleware;
-use App\Http\Middleware\Queue as MiddlewareQueue;
+use App\Http\Middlewares\TestMiddleware;
 use App\Models\Connection;
+use PhpEasyHttp\Http\Server\RequestHandler;
 
 Bind::add('connect', Connection::getConnection());
 
-
-MiddlewareQueue::setMap([
-    "middleware" => TestMiddleware::class
+RequestHandler::setMap([
+    'middleware' => TestMiddleware::class
 ]);
 
-MiddlewareQueue::setDefault([
-    "middleware"
+RequestHandler::setDefault([
+    
 ]);
