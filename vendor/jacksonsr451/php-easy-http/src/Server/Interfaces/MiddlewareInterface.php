@@ -7,5 +7,5 @@ use PhpEasyHttp\Http\Message\Interfaces\ResponseInterface;
 
 interface MiddlewareInterface
 {
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): null|ResponseInterface;
 }

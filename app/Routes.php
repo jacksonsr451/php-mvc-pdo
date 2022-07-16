@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Route;
+use PhpEasyHttp\Http\Server\Route;
 
 Route::get("/", "HomeController@index", ['middleware']);
 

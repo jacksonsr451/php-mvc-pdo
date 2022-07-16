@@ -69,6 +69,19 @@ class ComposerStaticInit61c605b98da07986f0a9f48146768c91
         'PhpEasyHttp\\Http\\Message\\Traits\\RequestTrait' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Traits/RequestTrait.php',
         'PhpEasyHttp\\Http\\Message\\UploadFiles' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/UploadFiles.php',
         'PhpEasyHttp\\Http\\Message\\Uri' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Uri.php',
+        'PhpEasyHttp\\Http\\Server\\CsrfTokenMiddleware' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/CsrfTokenMiddleware.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\ClassDontExistException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/ClassDontExistException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\InvalidCsrfException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/InvalidCsrfException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\MethodDontExistException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/MethodDontExistException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\MiddlewareException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/MiddlewareException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\NoCsrfException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/NoCsrfException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\RouteDontExistException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/RouteDontExistException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\TypeError' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/TypeError.php',
+        'PhpEasyHttp\\Http\\Server\\Interfaces\\MiddlewareInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Interfaces/MiddlewareInterface.php',
+        'PhpEasyHttp\\Http\\Server\\Interfaces\\RequestHandlerInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Interfaces/RequestHandler.php',
+        'PhpEasyHttp\\Http\\Server\\Middleware' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Middleware.php',
+        'PhpEasyHttp\\Http\\Server\\RequestHandler' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/RequestHandler.php',
+        'PhpEasyHttp\\Http\\Server\\Route' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Route.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

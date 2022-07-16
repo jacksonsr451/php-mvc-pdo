@@ -26,7 +26,7 @@ class UsersController extends Controller
 
     public function create(ServerRequestInterface $request): void
     {
-        var_dump($request);
+        // var_dump($request);
     }
 
     public function delete(array $params): void

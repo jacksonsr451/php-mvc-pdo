@@ -4,9 +4,9 @@ namespace PhpEasyHttp\Http\Server\Exceptions;
 
 use Exception;
 
-class MiddlewareException extends Exception
+class MethodDontExistException extends Exception
 {
-    public function __construct($message = "Exception in middleware")
+    public function __construct($message = "")
     {
         $this->message = $message;
     }
