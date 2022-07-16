@@ -1,43 +1,6 @@
 {
     "packages": [
         {
-            "name": "jacksonsr451/php-easy-http",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jacksonsr451/php-easy-http.git",
-                "reference": "66ce148a0dc16423ed8c939a0c871ff940a6b82c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jacksonsr451/php-easy-http/zipball/66ce148a0dc16423ed8c939a0c871ff940a6b82c",
-                "reference": "66ce148a0dc16423ed8c939a0c871ff940a6b82c",
-                "shasum": ""
-            },
-            "time": "2022-07-14T13:19:08+00:00",
-            "default-branch": true,
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "PhpEasyHttp\\HTTP\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "jacksonsr451",
-                    "email": "jackson.severino.rocha@escola.pr.gov.br"
-                }
-            ],
-            "support": {
-                "issues": "https://github.com/jacksonsr451/php-easy-http/issues",
-                "source": "https://github.com/jacksonsr451/php-easy-http/tree/v1.0.0"
-            },
-            "install-path": "../jacksonsr451/php-easy-http"
-        },
-        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.7.1",
             "version_normalized": "3.7.1.0",

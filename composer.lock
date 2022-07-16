@@ -4,43 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1afd23474f0df4b6e995fa30dfaf8ac",
-    "packages": [
-        {
-            "name": "jacksonsr451/php-easy-http",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jacksonsr451/php-easy-http.git",
-                "reference": "66ce148a0dc16423ed8c939a0c871ff940a6b82c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jacksonsr451/php-easy-http/zipball/66ce148a0dc16423ed8c939a0c871ff940a6b82c",
-                "reference": "66ce148a0dc16423ed8c939a0c871ff940a6b82c",
-                "shasum": ""
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PhpEasyHttp\\HTTP\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "jacksonsr451",
-                    "email": "jackson.severino.rocha@escola.pr.gov.br"
-                }
-            ],
-            "support": {
-                "issues": "https://github.com/jacksonsr451/php-easy-http/issues",
-                "source": "https://github.com/jacksonsr451/php-easy-http/tree/v1.0.0"
-            },
-            "time": "2022-07-14T13:19:08+00:00"
-        }
-    ],
+    "content-hash": "b47408bc6c7359720b6effb14e9bce4a",
+    "packages": [],
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
@@ -101,9 +66,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "jacksonsr451/php-easy-http": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
