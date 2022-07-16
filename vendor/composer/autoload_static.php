@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit61c605b98da07986f0a9f48146768c91
 {
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'PhpEasyHttp\\Http\\' => 17,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +18,10 @@ class ComposerStaticInit61c605b98da07986f0a9f48146768c91
     );
 
     public static $prefixDirsPsr4 = array (
+        'PhpEasyHttp\\Http\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -21,7 +29,55 @@ class ComposerStaticInit61c605b98da07986f0a9f48146768c91
     );
 
     public static $classMap = array (
+        'App\\Bind' => __DIR__ . '/../..' . '/app/Bind.php',
+        'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
+        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
+        'App\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Controllers/UsersController.php',
+        'App\\Dotenv' => __DIR__ . '/../..' . '/app/Dotenv.php',
+        'App\\Http\\Middlewares\\TestMiddleware' => __DIR__ . '/../..' . '/app/Http/Middlewares/TestMiddleware.php',
+        'App\\Http\\Validation' => __DIR__ . '/../..' . '/app/Http/Validation.php',
+        'App\\Http\\ValidationAbstract' => __DIR__ . '/../..' . '/app/Http/ValidationAbstract.php',
+        'App\\Models\\Connection' => __DIR__ . '/../..' . '/app/Models/Connection.php',
+        'App\\Models\\Model' => __DIR__ . '/../..' . '/app/Models/Model.php',
+        'App\\Models\\PostModel' => __DIR__ . '/../..' . '/app/Models/PostModel.php',
+        'App\\Models\\QueryBuilder\\Insert' => __DIR__ . '/../..' . '/app/Models/QueryBuilder/Insert.php',
+        'App\\Models\\QueryBuilder\\Update' => __DIR__ . '/../..' . '/app/Models/QueryBuilder/Update.php',
+        'App\\Models\\Traits\\PersistDB' => __DIR__ . '/../..' . '/app/Models/Traits/PersistDB.php',
+        'App\\Models\\Transaction' => __DIR__ . '/../..' . '/app/Models/Transaction.php',
+        'App\\Models\\UserModel' => __DIR__ . '/../..' . '/app/Models/UserModel.php',
+        'ComposerAutoloaderInit377566bb8eaa1143e43fa299b259a44c' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/vendor/composer/autoload_real.php',
+        'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/vendor/composer/ClassLoader.php',
+        'Composer\\Autoload\\ComposerStaticInit377566bb8eaa1143e43fa299b259a44c' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/vendor/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'PhpEasyHttp\\Http\\Message\\Interfaces\\MessageInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Interfaces/MessageInterface.php',
+        'PhpEasyHttp\\Http\\Message\\Interfaces\\RequestInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Interfaces/RequestInterface.php',
+        'PhpEasyHttp\\Http\\Message\\Interfaces\\ResponseInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Interfaces/ResponseInterface.php',
+        'PhpEasyHttp\\Http\\Message\\Interfaces\\ServerRequestInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Interfaces/ServerRequestInterface.php',
+        'PhpEasyHttp\\Http\\Message\\Interfaces\\StreamInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Interfaces/StreamInterface.php',
+        'PhpEasyHttp\\Http\\Message\\Interfaces\\UploadFileInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Interfaces/UploadFileInterface.php',
+        'PhpEasyHttp\\Http\\Message\\Interfaces\\UriInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Interfaces/UriInterface.php',
+        'PhpEasyHttp\\Http\\Message\\Message' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Message.php',
+        'PhpEasyHttp\\Http\\Message\\Request' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Request.php',
+        'PhpEasyHttp\\Http\\Message\\Response' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Response.php',
+        'PhpEasyHttp\\Http\\Message\\ServerRequest' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/ServerRequest.php',
+        'PhpEasyHttp\\Http\\Message\\Stream' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Stream.php',
+        'PhpEasyHttp\\Http\\Message\\Traits\\MessageTrait' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Traits/MessageTrait.php',
+        'PhpEasyHttp\\Http\\Message\\Traits\\RequestTrait' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Traits/RequestTrait.php',
+        'PhpEasyHttp\\Http\\Message\\UploadFiles' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/UploadFiles.php',
+        'PhpEasyHttp\\Http\\Message\\Uri' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Message/Uri.php',
+        'PhpEasyHttp\\Http\\Server\\CsrfTokenMiddleware' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/CsrfTokenMiddleware.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\ClassDontExistException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/ClassDontExistException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\InvalidCsrfException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/InvalidCsrfException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\MethodDontExistException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/MethodDontExistException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\MiddlewareException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/MiddlewareException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\NoCsrfException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/NoCsrfException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\RouteDontExistException' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/RouteDontExistException.php',
+        'PhpEasyHttp\\Http\\Server\\Exceptions\\TypeError' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Exceptions/TypeError.php',
+        'PhpEasyHttp\\Http\\Server\\Interfaces\\MiddlewareInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Interfaces/MiddlewareInterface.php',
+        'PhpEasyHttp\\Http\\Server\\Interfaces\\RequestHandlerInterface' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Interfaces/RequestHandler.php',
+        'PhpEasyHttp\\Http\\Server\\Middleware' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Middleware.php',
+        'PhpEasyHttp\\Http\\Server\\RequestHandler' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/RequestHandler.php',
+        'PhpEasyHttp\\Http\\Server\\Route' => __DIR__ . '/..' . '/jacksonsr451/php-easy-http/src/Server/Route.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

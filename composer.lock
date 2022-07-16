@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b47408bc6c7359720b6effb14e9bce4a",
-    "packages": [],
+    "content-hash": "c098ccee5de52b917e3cf20682f0360a",
+    "packages": [
+        {
+            "name": "jacksonsr451/php-easy-http",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jacksonsr451/php-easy-http.git",
+                "reference": "f8546cbc639521d4f6dbf70741f5d738d23e2b22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jacksonsr451/php-easy-http/zipball/f8546cbc639521d4f6dbf70741f5d738d23e2b22",
+                "reference": "f8546cbc639521d4f6dbf70741f5d738d23e2b22",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpEasyHttp\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jacksonsr451",
+                    "email": "jackson.severino.rocha@escola.pr.gov.br"
+                }
+            ],
+            "description": "This is a simple library by HTTP, with server and message and using PSRs.",
+            "support": {
+                "issues": "https://github.com/jacksonsr451/php-easy-http/issues",
+                "source": "https://github.com/jacksonsr451/php-easy-http/tree/1.2.0"
+            },
+            "time": "2022-07-16T13:34:51+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
@@ -65,7 +106,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,

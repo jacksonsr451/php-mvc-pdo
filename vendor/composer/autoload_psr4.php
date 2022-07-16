@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PhpEasyHttp\\Http\\' => array($vendorDir . '/jacksonsr451/php-easy-http/src'),
     'App\\' => array($baseDir . '/app'),
 );
